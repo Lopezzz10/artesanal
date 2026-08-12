@@ -71,4 +71,13 @@ public class Maquina {
 			return false;
 		}
 	}
+	public double servirCerveza(double cantidad) {
+		if(cantidadActual >= cantidad) {
+			cantidadActual = cantidadActual - cantidad;
+			double valor = cantidad * precioPorMl;
+			return valor;
+		}else {
+			return 0;
+		}
+	}
 }
