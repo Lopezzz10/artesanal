@@ -24,7 +24,7 @@ class TestServirCervezaAI {
     @Test
     void servirCantidadMenorALaDisponible_debeDescontarYRetornarValorCorrecto() {
         // Usa el constructor con capacidadMaxima explícita
-        Maquina maquina = new Maquina("IPA Artesanal", "Cerveza tipo IPA", 5.0, 2000);
+    	Maquina maquina = new Maquina("M001", "IPA Artesanal", "Cerveza tipo IPA", 5.0, 2000);
         // Se carga la máquina con cerveza disponible
         maquina.recargarCerveza(1000);
 
@@ -39,7 +39,7 @@ class TestServirCervezaAI {
     @Test
     void servirCantidadExactaALaDisponible_debeDejarCantidadActualEnCero() {
         // Usa el constructor con capacidadMaxima por defecto (10000)
-        Maquina maquina = new Maquina("Stout Negra", "Cerveza tipo Stout", 3.5);
+    	Maquina maquina = new Maquina("M002", "Stout Negra", "Cerveza tipo Stout", 3.5);
         maquina.recargarCerveza(500);
 
         double valorPagado = maquina.servirCerveza(500);
@@ -51,7 +51,7 @@ class TestServirCervezaAI {
 
     @Test
     void servirCantidadMayorALaDisponible_noDebeServirYDebeRetornarCero() {
-        Maquina maquina = new Maquina("Lager Dorada", "Cerveza tipo Lager", 4.0, 1500);
+    	Maquina maquina = new Maquina("M003", "Lager Dorada", "Cerveza tipo Lager", 4.0, 1500);
         maquina.recargarCerveza(200);
 
         double valorPagado = maquina.servirCerveza(500);
@@ -65,7 +65,7 @@ class TestServirCervezaAI {
     @Test
     void servirSinRecargarLaMaquina_debeRetornarCeroYNoModificarCantidad() {
         // Máquina recién construida, sin cerveza (cantidadActual = 0 por defecto)
-        Maquina maquina = new Maquina("Porter Oscura", "Cerveza tipo Porter", 6.0, 3000);
+    	Maquina maquina = new Maquina("M004", "Porter Oscura", "Cerveza tipo Porter", 6.0, 3000);
 
         double valorPagado = maquina.servirCerveza(100);
 
@@ -76,7 +76,7 @@ class TestServirCervezaAI {
 
     @Test
     void servirCantidadCero_debeRetornarCeroYNoModificarCantidad() {
-        Maquina maquina = new Maquina("Ale Rubia", "Cerveza tipo Ale", 4.5, 2000);
+    	Maquina maquina = new Maquina("M005", "Ale Rubia", "Cerveza tipo Ale", 4.5, 2000);
         maquina.recargarCerveza(800);
 
         double valorPagado = maquina.servirCerveza(0);
@@ -89,7 +89,7 @@ class TestServirCervezaAI {
 
     @Test
     void serviciosSucesivos_debenDescontarAcumulativamente() {
-        Maquina maquina = new Maquina("Golden Ale", "Cerveza clara", 2.0, 5000);
+    	Maquina maquina = new Maquina("M006", "Golden Ale", "Cerveza clara", 2.0, 5000);
         maquina.recargarCerveza(1000);
 
         double primerPago = maquina.servirCerveza(400);
@@ -103,7 +103,7 @@ class TestServirCervezaAI {
 
     @Test
     void servirDespuesDeIntentoFallido_laMaquinaDebeSeguirFuncionandoCorrectamente() {
-        Maquina maquina = new Maquina("Cerveza Roja", "Cerveza tipo Red Ale", 3.0, 1200);
+    	Maquina maquina = new Maquina("M007", "Cerveza Roja", "Cerveza tipo Red Ale", 3.0, 1200);
         maquina.recargarCerveza(500);
 
         // Intento fallido: pide más de lo disponible
@@ -120,8 +120,8 @@ class TestServirCervezaAI {
     @Test
     void constructorConCapacidadPorDefecto_debeServirCorrectamente() {
         // Constructor sin capacidadMaxima explícita (usa 10000 por defecto)
-        Maquina maquina = new Maquina("Trigo Belga", "Cerveza de trigo", 7.25);
-        assertEquals(10000, maquina.getCapacidadMaxima(), DELTA);
+    	Maquina maquina = new Maquina("M008", "Trigo Belga", "Cerveza de trigo", 7.25);
+    	assertEquals(10000, maquina.getCapacidadMaxima(), DELTA);
 
         maquina.recargarCerveza(1000);
         double valorPagado = maquina.servirCerveza(250);
